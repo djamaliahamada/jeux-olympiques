@@ -1,0 +1,10 @@
+# activation de reecriture d'url
+RewriteEngine On
+
+# Ne réécrire que si le fichier demandé n'existe pas 
+#c.a.d de ne pas faire la reecriture d'url s'il s'agit d'un fichier ou dossier
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrire toutes les autres requêtes vers index.php
+RewriteRule ^(.+)$ index.php?r=$1 [QSA,L]
